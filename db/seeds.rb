@@ -17,7 +17,23 @@ users = User.create([{
     occupation: "coder",
     gender: "male"
 
-}])
+},
+{
+firstName: "eddy",
+lastName:"ogutu",
+ username:"lawi",
+ email:"lawiken497@gmail.com",
+password: "test1",
+password_confirmation: "test1",
+location:"Nairobi",
+age:22,
+occupation:"coder",
+gender:"male"
+}
+
+
+
+])
 
 
  

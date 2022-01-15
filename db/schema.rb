@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_10_101800) do
+ActiveRecord::Schema.define(version: 2022_01_15_150837) do
+
+  create_table "moods", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "hours_slept"
+    t.string "depressed"
+    t.string "anxiety"
+    t.integer "irritability_level"
+    t.integer "elevated_level"
+    t.boolean "psychotic_symptoms"
+    t.string "weather"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_moods_on_user_id"
+  end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "firstName"
@@ -27,4 +41,5 @@ ActiveRecord::Schema.define(version: 2022_01_10_101800) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "moods", "users"
 end

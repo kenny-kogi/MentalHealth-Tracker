@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hours_slept: 1
+  depressed: MyString
+  anxiety: MyString
+  irritability_level: 1
+  elevated_level: 1
+  psychotic_symptoms: false
+  weather: MyString
+
+two:
+  hours_slept: 1
+  depressed: MyString
+  anxiety: MyString
+  irritability_level: 1
+  elevated_level: 1
+  psychotic_symptoms: false
+  weather: MyString

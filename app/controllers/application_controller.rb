@@ -16,4 +16,12 @@ class ApplicationController < ActionController::Base
     def logout!
         session.clear
     end
+
+    def logged_in_patient?
+        !!session[:patient_id]
+    end
+
+    def current_patient
+        @current_patient ||= Patient.find(session[:patient_id]) if session[:patient_id]
+    end
 end

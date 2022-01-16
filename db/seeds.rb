@@ -18,20 +18,31 @@ users = User.create([{
     gender: "male"
 
 },
-{
-firstName: "eddy",
-lastName:"ogutu",
- username:"lawi",
- email:"lawiken497@gmail.com",
-password: "test1",
-password_confirmation: "test1",
-location:"Nairobi",
-age:22,
-occupation:"coder",
-gender:"male"
-}
+    {
+    firstName: "eddy",
+    lastName:"ogutu",
+    username:"lawi",
+    email:"lawiken497@gmail.com",
+    password: "test1",
+    password_confirmation: "test1",
+    location:"Nairobi",
+    age:22,
+    occupation:"coder",
+    gender:"male"
+    },
 
-
+    {
+        firstName: "iraki",
+        lastName: "kecin",
+        username: "kevo",
+        email: "kevinken497@gmail.com",
+        password: "test",
+        password_confirmation: "test",
+        location: "Nairobi",
+        age: 25,
+        occupation: "coder",
+        gender: "male"
+    }
 
 ])
 

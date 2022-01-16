@@ -1,12 +1,12 @@
-class SessionsController < ApplicationController
+class PatientsSessionsController < ApplicationController
   def create
-    @patient = Patient.find_by(email: session_params[:email])
+    @patient = Patient.find_by(email: session_params_patients[:email])
   
-    if @patient && @patient.authenticate(session_params[:password])
+    if @patient && @patient.authenticate(session_params_patients[:password])
       session[:patient_id] = @patient.id
       render json: {
         logged_in: true,
-        user: @user
+        user: @patient
       }
     else
       render json: { 
@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
       }
     end
   end
+
   def is_logged_in?
     if logged_in_patient? && current_patient
       render json: {
@@ -36,7 +37,7 @@ class SessionsController < ApplicationController
     }
   end
   private
-  def session_params
+  def session_params_patients
     params.require(:patient).permit(:username, :email, :password)
   end
 end

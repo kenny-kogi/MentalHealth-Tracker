@@ -10,7 +10,13 @@ Rails.application.routes.draw do
   delete 'patient/logout', to: 'patients_sessions#destroy'
   get 'patient/logged_in', to: 'patients_sessions#is_logged_in?'
 
+  ##Therapist session routes
+  post 'therapist/login', to: 'therapists_sessions#create'
+  delete 'therapist/logout', to: 'therapists_sessions#destroy'
+  get 'therapist/logged_in', to: 'therapists_sessions#is_logged_in?'
+
   resources :users, only: [:create, :show, :index]
   resources :patients, only: [:create, :show, :index]
   resources :moods
+  resources :therapists, only: [:create, :show, :index, :destroy]
 end

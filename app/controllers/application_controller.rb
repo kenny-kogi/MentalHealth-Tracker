@@ -24,4 +24,13 @@ class ApplicationController < ActionController::Base
     def current_patient
         @current_patient ||= Patient.find(session[:patient_id]) if session[:patient_id]
     end
+
+    def logged_in_therapist?
+        !!session[:therapist_id]
+    end
+
+    def current_therapist
+        @current_therapist ||= Therapist.find(session[:therapist_id]) if session[:therapist_id]
+    end
+
 end

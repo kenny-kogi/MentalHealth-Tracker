@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_16_072958) do
+ActiveRecord::Schema.define(version: 2022_01_16_125617) do
 
   create_table "moods", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "hours_slept"
@@ -41,6 +41,20 @@ ActiveRecord::Schema.define(version: 2022_01_16_072958) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "email"
+  end
+
+  create_table "therapists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "firstName"
+    t.string "lastName"
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
+    t.string "location"
+    t.string "gender"
+    t.string "specialization"
+    t.string "imageurl"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

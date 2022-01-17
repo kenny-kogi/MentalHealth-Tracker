@@ -1,3 +1,4 @@
 class Mood < ApplicationRecord
-    belongs_to :user
+    belongs_to :user, optional: true
+    belongs_to :patient, optional: true
 end

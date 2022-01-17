@@ -79,7 +79,9 @@ class MoodsController < ApplicationController
 
     private
 
-    def mood_params
-        params.require(:mood).permit(:hours_slept, :depressed, :anxiety, :irritability_level, :elevated_level, :psychotic_symptoms, :weather, :user_id)
+    def mood_params  
+        params.require(:mood).permit(:hours_slept, :depressed, :anxiety, :irritability_level, :elevated_level, :psychotic_symptoms, :weather, :user_id, :patient_id)
+        # elsif params[:mood][:patient_id]? 
+            #  params.require(:mood).permit(:hours_slept, :depressed, :anxiety, :irritability_level, :elevated_level, :psychotic_symptoms, :weather, :patient_id)
     end
 end

@@ -1,5 +1,6 @@
 class Therapist < ApplicationRecord
     has_secure_password
+    has_many :patients
 
     validates :username, presence: true 
     validates :username, uniqueness: true

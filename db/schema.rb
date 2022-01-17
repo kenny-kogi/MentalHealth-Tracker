@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_16_125617) do
+ActiveRecord::Schema.define(version: 2022_01_17_153837) do
 
   create_table "moods", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "hours_slept"
@@ -22,7 +22,9 @@ ActiveRecord::Schema.define(version: 2022_01_16_125617) do
     t.string "weather"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: true
+    t.bigint "user_id"
+    t.integer "patient_id"
+    t.index ["patient_id"], name: "index_moods_on_patient_id"
     t.index ["user_id"], name: "index_moods_on_user_id"
   end
 
@@ -41,6 +43,8 @@ ActiveRecord::Schema.define(version: 2022_01_16_125617) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "email"
+    t.bigint "therapist_id"
+    t.index ["therapist_id"], name: "index_patients_on_therapist_id"
   end
 
   create_table "therapists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

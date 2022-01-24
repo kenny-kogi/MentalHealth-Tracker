@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
     def index
         @users = User.all
+
         if @users
         render json: {
             users: @users
@@ -13,7 +14,7 @@ class UsersController < ApplicationController
         end
     end
     def show
-    @user = User.find(params[:id])
+      @user = User.find(params[:id])
         if @user
         render json: {
             user: @user
@@ -44,7 +45,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:firstName, :lastName, :username, :email, :password, :password_confirmation, :location, :age, :occupation, :gender, :image_url)
+    params.require(:user).permit(:firstName, :lastName, :username, :email, :password, :password_confirmation, :location, :age, :occupation, :gender, :image)
   end
 end
 

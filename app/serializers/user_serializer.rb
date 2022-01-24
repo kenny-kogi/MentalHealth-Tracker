@@ -1,10 +1,13 @@
 class UserSerializer < ActiveModel::Serializer
   attributes :id, :firstName, :lastName, :username, :email,:location, :age, :occupation, :gender, :image
 
-  include Rails.application.routes.url_helpers
+
+  has_many :moods
 
   def image  
-    rails_blob_path(object.image, only_path: true) if object.image.attached?
+    if object.image.attached?
+      rails_blob_path(object.image, only_path: true)
+    end
   end
 
 end

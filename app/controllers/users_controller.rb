@@ -3,9 +3,8 @@ class UsersController < ApplicationController
         @users = User.all
 
         if @users
-        render json: {
-            users: @users
-        }
+        render json: @users, each_serializer: UserSerializer
+        
         else
         render json: {
             status: 500,

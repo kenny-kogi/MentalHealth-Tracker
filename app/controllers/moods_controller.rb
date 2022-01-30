@@ -4,9 +4,8 @@ class MoodsController < ApplicationController
         @moods = Mood.all
 
         if @moods
-            render json: {
-                moods: @moods
-            }
+        render json: @moods, each_serializer: MoodSerializer
+            
         else
             render json: {
                 status: 500,

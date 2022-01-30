@@ -4,10 +4,16 @@ class UsersSessionsController < ApplicationController
   
     if @user && @user.authenticate(session_params[:password])
       login!
-      render json: {
+   
+
+      
+       render json: {
         logged_in: true,
         user: @user
       }
+      
+
+ 
     else
       render json: { 
         status: 401,
@@ -38,5 +44,9 @@ class UsersSessionsController < ApplicationController
   private
   def session_params
     params.require(:user).permit(:username, :email, :password)
+  end
+
+  def login_hash
+    {logged_in: true}
   end
 end

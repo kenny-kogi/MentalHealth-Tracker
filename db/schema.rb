@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_24_093300) do
+ActiveRecord::Schema.define(version: 2022_01_30_104918) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 2022_01_24_093300) do
 
   create_table "moods", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "hours_slept"
-    t.string "depressed"
-    t.string "anxiety"
+    t.integer "depressed"
+    t.integer "anxiety"
     t.integer "irritability_level"
     t.integer "elevated_level"
     t.boolean "psychotic_symptoms"

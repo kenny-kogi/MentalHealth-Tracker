@@ -10,7 +10,7 @@ class MoodsController < ApplicationController
             render json: {
                 status: 500,
                 errors: ['No moods are available currently']
-            }
+            } 
         end
     end
 
@@ -79,7 +79,7 @@ class MoodsController < ApplicationController
     private
 
     def mood_params  
-        params.require(:mood).permit(:hours_slept, :depressed, :anxiety, :irritability_level, :elevated_level, :psychotic_symptoms, :weather, :user_id, :patient_id)
+        params.require(:mood).permit(:hours_slept, :depressed, :anxiety, :irritability_level, :elevated_level, :psychotic_symptoms, :weather, :user_id, :patient_id, :activity, :mood_note)
         # elsif params[:mood][:patient_id]? 
             #  params.require(:mood).permit(:hours_slept, :depressed, :anxiety, :irritability_level, :elevated_level, :psychotic_symptoms, :weather, :patient_id)
     end

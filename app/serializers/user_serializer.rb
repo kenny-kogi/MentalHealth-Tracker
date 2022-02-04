@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :firstName, :lastName, :username, :email, :password, :location, :age, :occupation, :gender, :image
+  attributes :id, :firstName, :lastName, :username, :email, :password, :location, :age, :occupation, :gender, :image, :moods
 
 
   has_many :moods
@@ -9,5 +9,11 @@ class UserSerializer < ActiveModel::Serializer
       rails_blob_path(object.image, only_path: true)
     end
   end
+
+    def moods    
+      self.object.moods.map do |mood|      
+        {mood: mood}    
+      end  
+    end
 
 end

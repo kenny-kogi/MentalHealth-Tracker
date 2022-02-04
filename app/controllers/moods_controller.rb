@@ -1,5 +1,5 @@
 class MoodsController < ApplicationController
-    before_action :mood_params, only: %i[ show edit update destroy ]
+    before_action :mood_params, only: %i[ edit update create ]
     def index
         @moods = Mood.all
 
@@ -15,10 +15,10 @@ class MoodsController < ApplicationController
     end
 
     def show
-        @mood = Mood.find(params[:id])
-        if @mood
+        @moods = Mood.where(user_id: params[:id])
+        if @moods
         render json: {
-            mood: @mood
+            moods: @moods
         }
         else
         render json: {
@@ -80,7 +80,6 @@ class MoodsController < ApplicationController
 
     def mood_params  
         params.require(:mood).permit(:hours_slept, :depressed, :anxiety, :irritability_level, :elevated_level, :psychotic_symptoms, :weather, :user_id, :patient_id, :activity, :mood_note)
-        # elsif params[:mood][:patient_id]? 
-            #  params.require(:mood).permit(:hours_slept, :depressed, :anxiety, :irritability_level, :elevated_level, :psychotic_symptoms, :weather, :patient_id)
+
     end
 end

@@ -28,10 +28,6 @@ class MoodsController < ApplicationController
         end
     end
 
-    def new
-        @mood = Mood.new
-    end
-
     def create
         @mood = Mood.new(mood_params)
         if @mood.save
@@ -47,9 +43,7 @@ class MoodsController < ApplicationController
         end
     end
 
-    def edit
-    end
-
+  
     
     def update
         @mood = Mood.find(params[:id])
@@ -76,10 +70,10 @@ class MoodsController < ApplicationController
         }
     end
 
+
     private
 
     def mood_params  
         params.require(:mood).permit(:hours_slept, :depressed, :anxiety, :irritability_level, :elevated_level, :psychotic_symptoms, :weather, :user_id, :patient_id, :activity, :mood_note)
-
     end
 end

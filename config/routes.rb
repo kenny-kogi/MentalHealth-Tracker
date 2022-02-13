@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   delete 'therapist/logout', to: 'therapists_sessions#destroy'
   get 'therapist/logged_in', to: 'therapists_sessions#is_logged_in?'
 
+  ## Query hours slept
+
+  get 'users/hours_data/:id', to: "users#hours_slept_data"
+
   resources :users, only: [:create, :show, :index]
   resources :patients, only: [:create, :show, :index]
   resources :moods

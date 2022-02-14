@@ -41,17 +41,17 @@ class UsersController < ApplicationController
   end
 
   def hours_slept_data
-     @sleepinghoursdata = User.find_by(id: params[:id]).moods.select("hours_slept", "created_at")
-
-     if @sleepinghoursdata
+      data = User.getslepthoursdata(params[:id])
+    
+     if data
       render json: {
         status: 200,
-        sleepinghoursdata: @sleepinghoursdata
+        sleepinghoursdata: data
       }
     else
       render json: {
         status: 500,
-        errors: @sleepinghoursdata.errors.full_messages
+        errors: data.errors.full_messages
       }
     end
 

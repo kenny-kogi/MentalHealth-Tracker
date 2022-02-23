@@ -19,6 +19,10 @@ Rails.application.routes.draw do
 
   get 'users/hours_data/:id', to: "users#hours_slept_data"
 
+  ## Query Average hours slept
+
+  get 'users/average_hours_data/:id', to: "users#average_slept_hours"
+
   resources :users, only: [:create, :show, :index]
   resources :patients, only: [:create, :show, :index]
   resources :moods

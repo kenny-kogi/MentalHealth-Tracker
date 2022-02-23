@@ -57,6 +57,22 @@ class UsersController < ApplicationController
 
   end
 
+  def average_slept_hours
+    data = User.getaverageslepthours(params[:id])
+
+    if data 
+        render json: {
+        status: 200,
+        averagesleepinghours: data
+      }
+    else
+        render json: {
+        status: 500,
+        errors: data.errors.full_messages
+      }
+    end
+  end
+
   private
   
   def user_params

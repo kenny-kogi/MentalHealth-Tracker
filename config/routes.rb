@@ -23,6 +23,10 @@ Rails.application.routes.draw do
 
   get 'users/average_hours_data/:id', to: "users#average_slept_hours"
 
+  ## Query Average Mood Levels
+
+  get 'users/average_mood_levels/:id', to: "users#average_mood_levels"
+
   resources :users, only: [:create, :show, :index]
   resources :patients, only: [:create, :show, :index]
   resources :moods

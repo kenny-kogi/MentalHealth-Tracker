@@ -23,12 +23,23 @@ class User < ApplicationRecord
     end
 
     def self.getaverageslepthours(id)
-        hours_slept_array = []
-        sleepinghoursdata = User.find_by(id: id).moods.select("hours_slept")
-        sleepinghoursdata.map{  |data| 
-            hours_slept_array.push(data.hours_slept)
-        }
-        hours_slept_array.sum / hours_slept_array.size
+        sleepinghoursdata = User.find_by(id: id).moods.average("hours_slept").round
+    end
+
+    def self.getAverageofallMoodlevels(id)
+        user = User.find_by(id: id)
+
+       depressedAverage = user.moods.average("depressed").round
+       anxietyAverage = user.moods.average("anxiety").round
+       irritabilityAverage = user.moods.average("irritability_level").round
+       elevatedAverage = user.moods.average("elevated_level").round
+
+       return {
+            depressed: depressedAverage,
+            anxiety: anxietyAverage,
+            irritability_level: irritabilityAverage,
+            elevated_level: elevatedAverage
+       }
     end
 
 end

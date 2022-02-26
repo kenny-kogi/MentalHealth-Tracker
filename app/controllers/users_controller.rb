@@ -90,6 +90,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def mood_array_data
+    data = User.getMoodData(params[:id])
+
+    if data
+      render json: {
+        status: 200,
+        moodArrayData: data
+      }
+    else
+      render json: {
+        status: 500,
+        errors: data.errors.full_messages
+      }
+    end
+  end
+
   private
   
   def user_params

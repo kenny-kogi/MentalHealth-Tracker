@@ -27,6 +27,10 @@ Rails.application.routes.draw do
 
   get 'users/average_mood_levels/:id', to: "users#average_mood_levels"
 
+  ## Query Mood Array Data
+
+  get 'users/mood_array_data/:id', to: "users#mood_array_data"
+
   resources :users, only: [:create, :show, :index]
   resources :patients, only: [:create, :show, :index]
   resources :moods

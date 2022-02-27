@@ -31,6 +31,23 @@ Rails.application.routes.draw do
 
   get 'users/mood_array_data/:id', to: "users#mood_array_data"
 
+  ## Query Depressed Mood Data
+
+  get 'users/mood_depressed_data/:id', to: "users#mood_depressed_data"
+
+  ## Query Irritability Mood Data
+
+  get 'users/mood_irritability_data/:id', to: "users#mood_irritability_data"
+
+  ## Query Anxiety Mood Data
+
+  get 'users/mood_anxiety_data/:id', to: "users#mood_anxiety_data"  
+
+  ## Query Elevated Mood Data
+
+  get 'users/mood_elevated_data/:id', to: "users#mood_elevated_data"  
+
+
   resources :users, only: [:create, :show, :index]
   resources :patients, only: [:create, :show, :index]
   resources :moods

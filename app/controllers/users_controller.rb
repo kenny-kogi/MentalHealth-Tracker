@@ -106,6 +106,70 @@ class UsersController < ApplicationController
     end
   end
 
+  def mood_depressed_data
+    data = User.getDepressedMoodData(params[:id])
+
+    if data
+      render json: {
+        status: 200,
+        moodDepressedData: data
+      }
+    else
+      render json: {
+        status: 500,
+        errors: data.errors.full_messages
+      }
+    end
+  end
+
+  def mood_anxiety_data
+     data = User.getAnxietyMoodData(params[:id])
+
+     if data 
+        render json: {
+          status: 200,
+          moodAnxietyData: data
+        }
+     else
+      render json: {
+        status: 500,
+        errors: data.errors.full_messages
+      }
+     end
+  end
+
+  def mood_irritability_data
+    data = User.getIrritabilityMoodData(params[:id])
+
+    if data
+      render json: {
+        status: 200,
+        moodIrritabilityData: data
+      }
+    else
+      render json: {
+        status: 500,
+        errors: data.errors.full_messages
+      }
+    end
+  end
+
+  def mood_elevated_data
+     data = User.getElevatedMoodData(params[:id])
+
+     if data
+      render json: {
+        status: 200,
+        moodElevatedData: data
+      }
+     else
+      render json: {
+        status: 500,
+        errors: data.errors.full_messages
+      }
+     end
+  end
+
   private
   
   def user_params

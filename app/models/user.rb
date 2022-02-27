@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-    
     has_secure_password
     has_many :moods, dependent: :destroy
     has_one_attached :image
@@ -72,6 +71,77 @@ class User < ApplicationRecord
             elevatedData: mood_elevated_array
 
         }   
+    end
+
+
+    def self.getDepressedMoodData(id)
+        depressed_created_array = []
+        mood_depressed_array = []
+        user = User.find_by(id: id)
+        moodCreatedAt = user.moods.select("created_at").last(10)
+        moodDepressedData = user.moods.select("depressed").last(10)
+
+        moodCreatedAt.map{|data| depressed_created_array.push(data.created_at)}
+        moodDepressedData.map{|data| mood_depressed_array.push(data.depressed)}
+
+        return {
+            createdDates: depressed_created_array,
+            depressedData: mood_depressed_array
+        }
+    end
+
+    def self.getAnxietyMoodData(id)
+        anxiety_created_array = []
+        mood_anxiety_array = []
+
+        user = User.find_by(id: id)
+        moodCreatedAt = user.moods.select("created_at").last(10)
+        moodAnxietyData = user.moods.select("anxiety").last(10)
+
+        moodCreatedAt.map{|data| anxiety_created_array.push(data.created_at)}
+        moodAnxietyData.map{|data| mood_anxiety_array.push(data.anxiety)}
+
+        return {
+            createdDates: anxiety_created_array,
+            anxietyData: mood_anxiety_array
+        }
+    end
+
+    def self.getIrritabilityMoodData(id)
+        irritability_created_array = []
+        mood_irritability_array = []
+
+        user = User.find_by(id: id)
+        moodCreatedAt = user.moods.select("created_at").last(10)
+        moodIrritabilityData = user.moods.select("irritability_level").last(10)
+
+        moodCreatedAt.map{|data| irritability_created_array.push(data.created_at)}
+        moodIrritabilityData.map{|data| mood_irritability_array.push(data.irritability_level)}
+
+        return {
+            createdDates: irritability_created_array,
+            irritabilityData: mood_irritability_array
+        }
+
+    end
+
+
+    def self.getElevatedMoodData(id)
+        elevated_created_array = []
+        mood_elevated_array = []
+
+        user = User.find_by(id: id)
+        moodCreatedAt = user.moods.select("created_at").last(10)
+        moodElevatedData = user.moods.select("elevated_level").last(10)
+
+        moodCreatedAt.map{|data| elevated_created_array.push(data.created_at)}
+        moodElevatedData.map{|data| mood_elevated_array.push(data.elevated_level)}
+
+
+        return {
+            moodCreatedAt: elevated_created_array,
+            elevatedData: mood_elevated_array
+        }
     end
 
 end

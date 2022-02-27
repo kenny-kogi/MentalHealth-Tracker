@@ -45,6 +45,136 @@ class PatientsController < ApplicationController
         end
     end
 
+  def hours_slept_data
+      data = Patient.getslepthoursdata(params[:id])
+    
+     if data
+      render json: {
+        status: 200,
+        sleepinghoursdata: data
+      }
+    else
+      render json: {
+        status: 500,
+        errors: data.errors.full_messages
+      }
+    end
+  end
+
+ def average_slept_hours
+    data = Patient.getaverageslepthours(params[:id])
+
+    if data 
+        render json: {
+        status: 200,
+        averagesleepinghours: data
+      } 
+    else
+        render json: {
+        status: 500,
+        errors: data.errors.full_messages
+      }
+    end
+  end
+
+  def average_mood_levels
+    data = Patient.getAverageofallMoodlevels(params[:id])
+
+    if data
+      render json: {
+        status: 200,
+        averagemoodlevels: data
+      }
+    else
+      render json: {
+        status: 500,
+        errors: data.errors.full_messages
+      }
+    end
+  end
+
+  def mood_array_data
+    data = Patient.getMoodData(params[:id])
+
+    if data
+      render json: {
+        status: 200,
+        moodArrayData: data
+      }
+    else
+      render json: {
+        status: 500,
+        errors: data.errors.full_messages
+      }
+    end
+  end
+
+  def mood_depressed_data
+    data = Patient.getDepressedMoodData(params[:id])
+
+    if data
+      render json: {
+        status: 200,
+        moodDepressedData: data
+      }
+    else
+      render json: {
+        status: 500,
+        errors: data.errors.full_messages
+      }
+    end
+  end
+
+  def mood_anxiety_data
+     data = Patient.getAnxietyMoodData(params[:id])
+
+     if data 
+        render json: {
+          status: 200,
+          moodAnxietyData: data
+        }
+     else
+      render json: {
+        status: 500,
+        errors: data.errors.full_messages
+      }
+     end
+  end
+
+  def mood_irritability_data
+    data = Patient.getIrritabilityMoodData(params[:id])
+
+    if data
+      render json: {
+        status: 200,
+        moodIrritabilityData: data
+      }
+    else
+      render json: {
+        status: 500,
+        errors: data.errors.full_messages
+      }
+    end
+  end
+
+  def mood_elevated_data
+     data = Patient.getElevatedMoodData(params[:id])
+
+     if data
+      render json: {
+        status: 200,
+        moodElevatedData: data
+      }
+     else
+      render json: {
+        status: 500,
+        errors: data.errors.full_messages
+      }
+     end
+  end
+
+
+
     private
 
     def patient_params 

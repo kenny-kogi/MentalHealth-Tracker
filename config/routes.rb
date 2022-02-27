@@ -15,37 +15,41 @@ Rails.application.routes.draw do
   delete 'therapist/logout', to: 'therapists_sessions#destroy'
   get 'therapist/logged_in', to: 'therapists_sessions#is_logged_in?'
 
+  ## User
   ## Query hours slept
-
   get 'users/hours_data/:id', to: "users#hours_slept_data"
-
   ## Query Average hours slept
-
   get 'users/average_hours_data/:id', to: "users#average_slept_hours"
-
   ## Query Average Mood Levels
-
   get 'users/average_mood_levels/:id', to: "users#average_mood_levels"
-
   ## Query Mood Array Data
-
   get 'users/mood_array_data/:id', to: "users#mood_array_data"
-
   ## Query Depressed Mood Data
-
   get 'users/mood_depressed_data/:id', to: "users#mood_depressed_data"
-
   ## Query Irritability Mood Data
-
   get 'users/mood_irritability_data/:id', to: "users#mood_irritability_data"
-
   ## Query Anxiety Mood Data
-
   get 'users/mood_anxiety_data/:id', to: "users#mood_anxiety_data"  
-
   ## Query Elevated Mood Data
-
   get 'users/mood_elevated_data/:id', to: "users#mood_elevated_data"  
+
+  ## Patient
+  ## Query hours slept
+  get 'patients/hours_data/:id', to: "patients#hours_slept_data"
+  ## Query Average hours slept
+  get 'patients/average_hours_data/:id', to: "patients#average_slept_hours"
+  ## Query Average Mood Levels
+  get 'patients/average_mood_levels/:id', to: "patients#average_mood_levels"
+  ## Query Mood Array Data
+  get 'patients/mood_array_data/:id', to: "patients#mood_array_data"
+ ## Query Depressed Mood Data
+  get 'patients/mood_depressed_data/:id', to: "patients#mood_depressed_data"
+  ## Query Irritability Mood Data
+  get 'patients/mood_irritability_data/:id', to: "patients#mood_irritability_data"
+  ## Query Anxiety Mood Data
+  get 'patients/mood_anxiety_data/:id', to: "patients#mood_anxiety_data"  
+  ## Query Elevated Mood Data
+  get 'patients/mood_elevated_data/:id', to: "patients#mood_elevated_data"  
 
 
   resources :users, only: [:create, :show, :index]

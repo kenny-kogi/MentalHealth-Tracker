@@ -80,13 +80,15 @@ class User < ApplicationRecord
         user = User.find_by(id: id)
         moodCreatedAt = user.moods.select("created_at").last(10)
         moodDepressedData = user.moods.select("depressed").last(10)
+        depressedAverage = user.moods.average("depressed").round
 
         moodCreatedAt.map{|data| depressed_created_array.push(data.created_at)}
         moodDepressedData.map{|data| mood_depressed_array.push(data.depressed)}
 
         return {
             createdDates: depressed_created_array,
-            depressedData: mood_depressed_array
+            depressedData: mood_depressed_array,
+            depressedAvg: depressedAverage
         }
     end
 
@@ -97,13 +99,16 @@ class User < ApplicationRecord
         user = User.find_by(id: id)
         moodCreatedAt = user.moods.select("created_at").last(10)
         moodAnxietyData = user.moods.select("anxiety").last(10)
+        anxietyAverage = user.moods.average("anxiety").round
 
         moodCreatedAt.map{|data| anxiety_created_array.push(data.created_at)}
         moodAnxietyData.map{|data| mood_anxiety_array.push(data.anxiety)}
 
         return {
             createdDates: anxiety_created_array,
-            anxietyData: mood_anxiety_array
+            anxietyData: mood_anxiety_array,
+            anxietyAvg: anxietyAverage
+
         }
     end
 
@@ -114,13 +119,15 @@ class User < ApplicationRecord
         user = User.find_by(id: id)
         moodCreatedAt = user.moods.select("created_at").last(10)
         moodIrritabilityData = user.moods.select("irritability_level").last(10)
+        irritabilityAverage = user.moods.average("irritability_level").round
 
         moodCreatedAt.map{|data| irritability_created_array.push(data.created_at)}
         moodIrritabilityData.map{|data| mood_irritability_array.push(data.irritability_level)}
 
         return {
             createdDates: irritability_created_array,
-            irritabilityData: mood_irritability_array
+            irritabilityData: mood_irritability_array,
+            irritabilityAvg: irritabilityAverage
         }
 
     end
@@ -133,14 +140,16 @@ class User < ApplicationRecord
         user = User.find_by(id: id)
         moodCreatedAt = user.moods.select("created_at").last(10)
         moodElevatedData = user.moods.select("elevated_level").last(10)
+        elevatedAverage = user.moods.average("elevated_level").round
 
         moodCreatedAt.map{|data| elevated_created_array.push(data.created_at)}
         moodElevatedData.map{|data| mood_elevated_array.push(data.elevated_level)}
 
 
         return {
-            moodCreatedAt: elevated_created_array,
-            elevatedData: mood_elevated_array
+            createdDates: elevated_created_array,
+            elevatedData: mood_elevated_array,
+            elevatedAvg: elevatedAverage
         }
     end
 

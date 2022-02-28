@@ -60,6 +60,13 @@ Rails.application.routes.draw do
   get 'patients/mood_elevated_data/:id', to: "patients#mood_elevated_data"  
 
 
+  ## Therapist
+
+
+  ## get All Patients
+  get "therapists/patients/:id", to: "therapists#get_all_patients"
+
+
   resources :users, only: [:create, :show, :index]
   resources :patients, only: [:create, :show, :index]
   resources :moods

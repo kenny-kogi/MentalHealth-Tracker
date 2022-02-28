@@ -10,4 +10,12 @@ class Therapist < ApplicationRecord
     validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
     validates :firstName, presence: true
     validates :lastName, presence: true
+
+
+    def self.get_all_therapist_patients(id)
+        therapist = Therapist.find_by(id: id)
+        therapist.patients
+    end
+
+
 end

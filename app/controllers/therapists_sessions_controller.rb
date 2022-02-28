@@ -6,7 +6,7 @@ class TherapistsSessionsController < ApplicationController
       session[:therapist_id] = @therapist.id
       render json: {
         logged_in: true,
-        user: @therapist
+        therapist: @therapist
       }
     else
       render json: { 
@@ -20,7 +20,7 @@ class TherapistsSessionsController < ApplicationController
     if logged_in_therapist? && current_therapist
       render json: {
         logged_in: true,
-        user: current_therapist
+        therapist: current_therapist
       }
     else
       render json: {

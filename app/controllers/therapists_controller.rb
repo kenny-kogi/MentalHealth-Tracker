@@ -59,6 +59,22 @@ class TherapistsController < ApplicationController
         end
     end
 
+    def get_all_patients
+        @data = Therapist.get_all_therapist_patients(params[:id])
+
+        if @data
+            render json: {
+                status: 200,
+                patients: @data
+            }
+        else
+            render json: {
+                status: 500,
+                errors: @data.errors.full_messages
+            }
+        end
+    end
+
     private
 
     def therapists_params 

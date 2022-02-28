@@ -14,8 +14,22 @@ class MoodsController < ApplicationController
         end
     end
 
-    def show
+    def show_mood_user
         @moods = Mood.where(user_id: params[:id])
+        if @moods
+        render json: {
+            moods: @moods
+        }
+        else
+        render json: {
+            status: 500,
+            errors: ['Mood not found']
+        }
+        end
+    end
+
+   def show_mood_patient
+        @moods = Mood.where(patient_id: params[:id])
         if @moods
         render json: {
             moods: @moods

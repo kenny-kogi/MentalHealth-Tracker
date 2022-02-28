@@ -15,7 +15,12 @@ Rails.application.routes.draw do
   delete 'therapist/logout', to: 'therapists_sessions#destroy'
   get 'therapist/logged_in', to: 'therapists_sessions#is_logged_in?'
 
+
   ## User
+
+  ## get user moods
+
+  get "moods/user/:id", to: 'moods#show_mood_user'
   ## Query hours slept
   get 'users/hours_data/:id', to: "users#hours_slept_data"
   ## Query Average hours slept
@@ -34,6 +39,9 @@ Rails.application.routes.draw do
   get 'users/mood_elevated_data/:id', to: "users#mood_elevated_data"  
 
   ## Patient
+
+  ## get Patient Moods
+  get "moods/patient/:id", to: "moods#show_mood_patient"
   ## Query hours slept
   get 'patients/hours_data/:id', to: "patients#hours_slept_data"
   ## Query Average hours slept

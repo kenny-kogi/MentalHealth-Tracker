@@ -28,6 +28,22 @@ class PatientsController < ApplicationController
         end
     end
 
+    def update
+       @patient = Patient.find(params[:id])
+
+       if @patient.update(patient_params)
+          render json: {
+            status: :updated,
+            patient: @patient
+          }
+       else
+         render json: {
+            status: 404,
+            errors: @patient.errors.full_messages
+         }
+       end
+    end
+
     def create
         @patient = Patient.new(patient_params)
 

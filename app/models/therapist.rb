@@ -1,6 +1,7 @@
 class Therapist < ApplicationRecord
     has_secure_password
-    has_many :patients
+    has_many :patients, dependent: :destroy
+    has_many :feedbacks, dependent: :destroy
 
     validates :username, presence: true 
     validates :username, uniqueness: true
@@ -17,5 +18,8 @@ class Therapist < ApplicationRecord
         therapist.patients
     end
 
-
+    def self.remove_patient_from_therapist(therapist_id, patient_id)
+        therapist = Therapist.find_by(id: therapist_id)
+        therapist.patients.where(id: patient_id).update(therapist_id: nil)
+    end
 end

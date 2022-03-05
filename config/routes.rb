@@ -59,6 +59,9 @@ Rails.application.routes.draw do
   ## Query Elevated Mood Data
   get 'patients/mood_elevated_data/:id', to: "patients#mood_elevated_data"  
 
+  ## Update Patient Details
+ 
+
 
   ## Therapist
 
@@ -66,9 +69,12 @@ Rails.application.routes.draw do
   ## get All Patients
   get "therapists/patients/:id", to: "therapists#get_all_patients"
 
+  ## Remove Patient from Therapist List
+  get "therapists/remove_patient/:therapist_id/:patient_id", to: "therapists#remove_patient_from_therapist"
+
 
   resources :users, only: [:create, :show, :index]
-  resources :patients, only: [:create, :show, :index]
+  resources :patients, only: [:create, :show, :index, :update]
   resources :moods
-  resources :therapists, only: [:create, :show, :index, :destroy]
+  resources :therapists
 end

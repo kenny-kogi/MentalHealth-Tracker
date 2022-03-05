@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_24_090525) do
+ActiveRecord::Schema.define(version: 2022_03_03_105742) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -38,6 +38,27 @@ ActiveRecord::Schema.define(version: 2022_02_24_090525) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "feedbacks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "patient_id"
+    t.bigint "therapist_id"
+    t.index ["patient_id"], name: "index_feedbacks_on_patient_id"
+    t.index ["therapist_id"], name: "index_feedbacks_on_therapist_id"
+  end
+
+  create_table "medications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "drug_name"
+    t.text "prescription"
+    t.integer "usage_interval"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "patient_id"
+    t.index ["patient_id"], name: "index_medications_on_patient_id"
   end
 
   create_table "moods", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -107,6 +128,9 @@ ActiveRecord::Schema.define(version: 2022_02_24_090525) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "feedbacks", "patients"
+  add_foreign_key "feedbacks", "therapists"
+  add_foreign_key "medications", "patients"
   add_foreign_key "moods", "patients"
   add_foreign_key "moods", "users"
   add_foreign_key "patients", "therapists"

@@ -15,19 +15,19 @@ class TherapistsController < ApplicationController
         end
     end
 
-    def show
-        @therapist = Therapist.find(params[:id])
-        if @therapist
-            render json: {
-                therapist: @therapist
-            }
-        else
-            render json: {
-                status: 500,
-                errors: ['Therapist not found']
-            }
-        end
-    end
+    # def show
+    #     @therapist = Therapist.find(params[:id])
+    #     if @therapist
+    #         render json: {
+    #             therapist: @therapist
+    #         }
+    #     else
+    #         render json: {
+    #             status: 500,
+    #             errors: ['Therapist not found']
+    #         }
+    #     end
+    # end
 
     def create
         @therapist = Therapist.new(therapists_params)
@@ -66,6 +66,21 @@ class TherapistsController < ApplicationController
             render json: {
                 status: 200,
                 patients: @data
+            }
+        else
+            render json: {
+                status: 500,
+                errors: @data.errors.full_messages
+            }
+        end
+    end
+
+    def remove_patient_from_therapist
+        @data = Therapist.remove_patient_from_therapist(params[:therapist_id], params[:patient_id])
+        if @data
+            render json: {
+                status: 200,
+                patient: @data
             }
         else
             render json: {

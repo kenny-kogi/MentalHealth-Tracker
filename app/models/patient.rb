@@ -2,6 +2,8 @@ class Patient < ApplicationRecord
     has_secure_password
     belongs_to :therapist
     has_many :moods, dependent: :destroy
+    has_many :medications, dependent: :destroy
+    has_many :feedbacks, dependent: :destroy
 
     validates :username, presence: true 
     validates :username, uniqueness: true

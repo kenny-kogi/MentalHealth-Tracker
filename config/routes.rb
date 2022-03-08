@@ -77,4 +77,5 @@ Rails.application.routes.draw do
   resources :patients, only: [:create, :show, :index, :update]
   resources :moods
   resources :therapists
+  resources :feedbacks
 end

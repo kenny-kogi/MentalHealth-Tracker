@@ -15,19 +15,20 @@ class TherapistsController < ApplicationController
         end
     end
 
-    # def show
-    #     @therapist = Therapist.find(params[:id])
-    #     if @therapist
-    #         render json: {
-    #             therapist: @therapist
-    #         }
-    #     else
-    #         render json: {
-    #             status: 500,
-    #             errors: ['Therapist not found']
-    #         }
-    #     end
-    # end
+    def show
+        @therapist = Therapist.find(params[:id])
+        if @therapist
+            render json: {
+                status: :created,
+                therapist: @therapist
+            }
+        else
+            render json: {
+                status: 500,
+                errors: ['Therapist not found']
+            }
+        end
+    end
 
     def create
         @therapist = Therapist.new(therapists_params)

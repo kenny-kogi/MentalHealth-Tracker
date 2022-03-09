@@ -31,6 +31,22 @@ class FeedbacksController < ApplicationController
         end
     end
 
+    def get_therapist_feedback
+        @data = Feedback.get_therapist_feedback(params[:id])
+
+        if @data
+            render json: {
+                status: :created,
+                feedbacks: @data
+            }
+        else
+            render json: {
+                status: 500,
+                errors: @data.errors.full_messages
+            }
+        end
+    end
+
 
     private
     def feedback_params

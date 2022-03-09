@@ -72,6 +72,11 @@ Rails.application.routes.draw do
   ## Remove Patient from Therapist List
   get "therapists/remove_patient/:therapist_id/:patient_id", to: "therapists#remove_patient_from_therapist"
 
+  ## Feedback
+
+  ## get Patient Feedbacks
+  get "patient/feedback/:id", to: "feedbacks#get_therapist_feedback"
+
 
   resources :users, only: [:create, :show, :index]
   resources :patients, only: [:create, :show, :index, :update]

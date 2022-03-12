@@ -33,4 +33,12 @@ class ApplicationController < ActionController::Base
         @current_therapist ||= Therapist.find(session[:therapist_id]) if session[:therapist_id]
     end
 
+    def logged_in_admin?
+        !!session[:admin_id]
+    end
+
+    def current_admin
+        @current_admin ||= Admin.find(session[:admin_id]) if session[:admin_id]
+    end
+
 end

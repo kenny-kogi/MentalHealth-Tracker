@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   delete 'therapist/logout', to: 'therapists_sessions#destroy'
   get 'therapist/logged_in', to: 'therapists_sessions#is_logged_in?'
 
+  ##Admin sessions
+  post 'admin/login', to: 'admins_sessions#create'
+  delete 'admin/logout', to: 'admins_sessions#destroy'
+  get 'admin/logged_in', to: 'admins_sessions#is_logged_in?'
 
   ## User
 
@@ -78,9 +82,13 @@ Rails.application.routes.draw do
   get "patient/feedback/:id", to: "feedbacks#get_therapist_feedback"
 
 
+  ## Admin
+
+
   resources :users, only: [:create, :show, :index]
   resources :patients, only: [:create, :show, :index, :update]
   resources :moods
   resources :therapists
   resources :feedbacks
+  resources :admins
 end

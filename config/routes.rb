@@ -91,4 +91,5 @@ Rails.application.routes.draw do
   resources :therapists
   resources :feedbacks
   resources :admins
+  resources :medications
 end

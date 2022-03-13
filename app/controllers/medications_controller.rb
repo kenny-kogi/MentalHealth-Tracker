@@ -31,6 +31,22 @@ class MedicationsController < ApplicationController
         end
     end
 
+    def patient_medication
+        @medication = Medication.where(patient_id: params[:id])
+
+        if @medication
+            render json: {
+                status: :created,
+                medications: @medication
+            }
+        else
+            render json: {
+                status: 500,
+                errors: @medication.errors.full_messages
+            }
+        end
+    end
+
 
     private
 

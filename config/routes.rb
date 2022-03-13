@@ -64,7 +64,7 @@ Rails.application.routes.draw do
   get 'patients/mood_elevated_data/:id', to: "patients#mood_elevated_data"  
 
   ## Update Patient Details
- 
+  
 
 
   ## Therapist
@@ -85,7 +85,11 @@ Rails.application.routes.draw do
   ## Admin
 
 
-  resources :users, only: [:create, :show, :index]
+  ## Medications
+  get "/patient/medication/:id", to: "medications#patient_medication"
+
+
+  resources :users, only: [:create, :show, :index, :update]
   resources :patients, only: [:create, :show, :index, :update]
   resources :moods
   resources :therapists

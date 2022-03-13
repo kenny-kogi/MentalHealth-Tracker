@@ -30,6 +30,22 @@ class TherapistsController < ApplicationController
         end
     end
 
+    def update
+       @therapist = Therapist.find(params[:id])
+
+       if @therapist.update(therapists_params)
+          render json: {
+            status: :updated,
+            therapist: @therapist
+          }
+       else
+         render json: {
+            status: 404,
+            errors: @therapist.errors.full_messages
+         }
+       end
+    end
+
     def create
         @therapist = Therapist.new(therapists_params)
 

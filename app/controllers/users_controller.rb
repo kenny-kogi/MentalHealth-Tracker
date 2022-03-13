@@ -40,6 +40,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+       @user = User.find(params[:id])
+
+       if @user.update(user_params)
+          render json: {
+            status: :updated,
+            user: @user
+          }
+       else
+         render json: {
+            status: 404,
+            errors: @user.errors.full_messages
+         }
+       end
+  end
+
   def hours_slept_data
       data = User.getslepthoursdata(params[:id])
     

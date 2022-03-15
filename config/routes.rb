@@ -63,12 +63,6 @@ Rails.application.routes.draw do
   ## Query Elevated Mood Data
   get 'patients/mood_elevated_data/:id', to: "patients#mood_elevated_data"  
 
-  ## Update Patient Details
-  
-
-
-  ## Therapist
-
 
   ## get All Patients
   get "therapists/patients/:id", to: "therapists#get_all_patients"
@@ -76,18 +70,43 @@ Rails.application.routes.draw do
   ## Remove Patient from Therapist List
   get "therapists/remove_patient/:therapist_id/:patient_id", to: "therapists#remove_patient_from_therapist"
 
-  ## Feedback
 
   ## get Patient Feedbacks
   get "patient/feedback/:id", to: "feedbacks#get_therapist_feedback"
 
 
-  ## Admin
-
-
   ## Medications
   get "/patient/medication/:id", to: "medications#patient_medication"
 
+  ## Reports
+  
+   # Get Users Count
+
+  get "/reports/users/count", to: "reports#get_users_count" 
+
+   # Get All User Names
+
+  get "/reports/users/names", to: "reports#get_users_names"  
+
+  # Get Patient Count
+
+  get "/reports/patient/count", to: "reports#get_patients_count"
+
+  # Get Patient Names
+
+  get "/reports/patient/names", to: "reports#get_patients_names"
+
+  # Get Therapist Count
+
+  get "/reports/therapist/count", to: "reports#get_therapist_count"
+
+  # Get Therapist Names
+
+  get "/reports/therapist/names", to: "reports#get_therapist_names"
+
+  # Get Therapist Patients
+
+  get "/reports/therapist/patients", to: "reports#get_therapist_patient"
 
   resources :users, only: [:create, :show, :index, :update]
   resources :patients, only: [:create, :show, :index, :update]

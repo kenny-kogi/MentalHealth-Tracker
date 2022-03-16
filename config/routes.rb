@@ -108,6 +108,18 @@ Rails.application.routes.draw do
 
   get "/reports/therapist/patients", to: "reports#get_therapist_patient"
 
+  # Get Average Age Of Users
+
+  get "/reports/users/averageAge", to: "reports#get_average_age_users"
+
+  # Get Average Age of PAtients
+
+  get "/reports/patients/averageAge", to: "reports#get_average_age_patient"
+
+  # Get User Location Data
+
+  get "/reports/user/locationData", to: "reports#get_user_location_data"
+
   resources :users, only: [:create, :show, :index, :update]
   resources :patients, only: [:create, :show, :index, :update]
   resources :moods

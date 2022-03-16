@@ -17,7 +17,7 @@ class MedicationsController < ApplicationController
 
     def create
         @medication = Medication.new(medications_params)
-
+                                                                                                                                                                                                                        
         if @medication.save
             render json: {
                 status: :created,

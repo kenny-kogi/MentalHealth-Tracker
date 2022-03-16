@@ -36,4 +36,26 @@ class Report < ApplicationRecord
         }
         therapist_patient
     end
+
+    def self.getAverageOfUsers
+        users = User.average("age").round
+    end
+
+    def self.getAverageAgeOfPatients
+        patients = Patient.average("age").round
+    end
+
+    def self.getUsersLocationData
+        users = User.all
+        location_data = {}
+
+        users.map{|data| 
+            if location_data.key?(data.location)
+                location_data[data.location] += 1
+            else
+                location_data[data.location] = 1
+            end
+        }
+        location_data
+    end
 end

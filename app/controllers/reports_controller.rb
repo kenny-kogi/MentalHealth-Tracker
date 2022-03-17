@@ -159,4 +159,52 @@ class ReportsController < ApplicationController
             }
         end
     end
+
+    def get_patient_location_data
+        @data = Report::getPatientsLocationData
+
+        if @data
+            render json: {
+                status: 200,
+                patientLocationData: @data
+            }
+        else
+            render json: {
+                status: 500,
+                errors: @data.errors.full_messages
+            }
+        end
+    end
+
+    def get_user_gender_data
+        @data = Report::getUsersAffectedGenderData
+
+        if @data
+            render json: {
+                status: 200,
+                userGenderData: @data
+            }
+        else
+            render json: {
+                status: 500,
+                errors: @data.errors.full_messages
+            }
+        end
+    end
+
+    def get_patient_gender_data
+        @data = Report::getPatientAffectedGenderData
+
+        if @data
+            render json: {
+                status: 200,
+                patientGenderData: @data
+            }
+        else
+            render json: {
+                status: 500,
+                errors: @data.errors.full_messages
+            }
+        end
+    end
 end

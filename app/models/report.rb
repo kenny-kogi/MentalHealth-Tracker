@@ -58,4 +58,49 @@ class Report < ApplicationRecord
         }
         location_data
     end
+
+    def self.getPatientsLocationData
+        patients = Patient.all
+        location_data = {}
+
+        patients.map{|data|
+            if location_data.key?(data.location)
+                location_data[data.location] += 1
+            else
+                location_data[data.location] = 1
+            end
+        }
+
+        location_data
+    end 
+
+    def self.getUsersAffectedGenderData
+        users = User.all
+        gender_data = {}
+
+        users.map{|data|
+            if gender_data.key?(data.gender)
+                gender_data[data.gender] += 1
+            else
+                gender_data[data.gender] = 1
+            end
+        }
+
+        gender_data
+    end
+
+    def self.getPatientAffectedGenderData
+        patients = Patient.all
+        gender_data = {}
+
+        patients.map{|data|
+            if gender_data.key?(data.gender)
+                gender_data[data.gender] += 1
+            else
+                gender_data[data.gender] = 1
+            end
+        }
+
+        gender_data
+    end
 end

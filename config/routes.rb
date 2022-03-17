@@ -120,6 +120,18 @@ Rails.application.routes.draw do
 
   get "/reports/user/locationData", to: "reports#get_user_location_data"
 
+  # Get Patient Location Data
+
+  get "/reports/patient/locationData", to: "reports#get_patient_location_data"
+
+  # Get User Gender Data
+
+  get "/reports/users/genderData", to: "reports#get_user_gender_data"
+
+  # Get Patient Gender Data
+
+  get "/reports/patients/genderData", to: "reports#get_patient_gender_data"
+
   resources :users, only: [:create, :show, :index, :update]
   resources :patients, only: [:create, :show, :index, :update]
   resources :moods

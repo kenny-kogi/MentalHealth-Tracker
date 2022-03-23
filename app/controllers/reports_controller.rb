@@ -1,12 +1,12 @@
 class ReportsController < ApplicationController
 
-    def get_users_count
-        @data = Report::getUsersCount
+   def get_models_count
+        @data = Report::getModelsCount
 
         if @data
             render json: {
                 status: 200,
-                usersCount: @data
+                modelsCount: @data
             }
         else
             render json: {
@@ -16,77 +16,13 @@ class ReportsController < ApplicationController
         end
     end
 
-    def get_users_names
-        @data = Report::getUserNames
+    def get_model_names
+        @data = Report::getModelNames
 
         if @data
             render json: {
                 status: 200,
-                usersNames: @data
-            }
-        else
-            render json: {
-                status: 500,
-                errors: @data.errors.full_messages
-            }
-        end
-    end
-
-    def get_patients_count
-        @data = Report::getPatientsCount
-
-        if @data
-            render json: {
-                status: 200,
-                patientCount: @data
-            }
-        else
-            render json:{
-                status: 500,
-                errors: @data.errors.full_messages
-            }
-        end
-    end
-
-    def get_patients_names
-        @data = Report::getPatientNames
-
-        if @data
-            render json: {
-                status: 200,
-                patientNames: @data
-            }
-        else
-            render json: {
-                status: 500,
-                errors: @data.errors.full_messages
-            }
-        end
-    end
-
-    def get_therapist_count
-        @data = Report::getTherapistCount
-
-        if @data
-            render json: {
-                status: 200,
-                therapistCount: @data
-            }
-        else
-            render json: {
-                status: 500,
-                errors: @data.errors.full_messages
-            }
-        end
-    end
-
-    def get_therapist_names
-        @data = Report::getTherapistNames
-
-        if @data
-            render json: {
-                status: 200,
-                therapistNames: @data
+                modelsNames: @data
             }
         else
             render json: {

@@ -1,29 +1,31 @@
 class Report < ApplicationRecord
 
-    def self.getUsersCount
+    def self.getModelsCount
         users = User.count
-    end
-
-    def self.getUserNames
-        users = User.select("firstName", "lastName", "id")
-    end
-
-    def self.getPatientsCount
         patients = Patient.count
-    end
-
-    def self.getPatientNames
-        patients = Patient.select("firstName", "lastName", "id")
-    end
-
-    def self.getTherapistCount
         therapists = Therapist.count
+
+        return {
+            usersCount: users,
+            patientsCount: patients,
+            therapistsCount: therapists
+        }
+
     end
 
-    def self.getTherapistNames
+    def self.getModelNames
+        users = User.select("firstName", "lastName", "id")
+        patients = Patient.select("firstName", "lastName", "id")
         therapists = Therapist.select("firstName", "lastName", "id")
+
+        return {
+            usersDetails: users,
+            patientsDetails: patients,
+            therapistsDetails: therapists
+        }
     end
 
+  
     def self.getTherapistPatients
         therapist = Patient.all
         therapist_patient = {}

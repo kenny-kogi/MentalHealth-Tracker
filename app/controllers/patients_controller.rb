@@ -61,6 +61,21 @@ class PatientsController < ApplicationController
         end
     end
 
+    def destroy
+    @patient = Patient.find(params[:id])
+
+    if @patient.destroy
+      render json: {
+        status: :deleted
+      }
+    else
+      render json: {
+        status: 404,
+        errors: @patient.errors.full_messages
+      }
+    end
+  end
+
   def hours_slept_data
       data = Patient.getslepthoursdata(params[:id])
     

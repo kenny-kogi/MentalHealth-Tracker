@@ -56,6 +56,21 @@ class UsersController < ApplicationController
        end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+
+    if @user.destroy
+      render json: {
+        status: :deleted
+      }
+    else
+      render json: {
+        status: 404,
+        errors: @user.errors.full_messages
+      }
+    end
+  end
+
   def hours_slept_data
       data = User.getslepthoursdata(params[:id])
     

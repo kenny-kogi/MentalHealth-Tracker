@@ -80,29 +80,15 @@ Rails.application.routes.draw do
 
   ## Reports
   
-   # Get Users Count
+   # Get Models Count
 
-  get "/reports/users/count", to: "reports#get_users_count" 
+  get "/reports/models/count", to: "reports#get_models_count"
 
-   # Get All User Names
+   # Get All Models Names
 
-  get "/reports/users/names", to: "reports#get_users_names"  
+  get "/reports/models/names", to: "reports#get_model_names"
 
-  # Get Patient Count
 
-  get "/reports/patient/count", to: "reports#get_patients_count"
-
-  # Get Patient Names
-
-  get "/reports/patient/names", to: "reports#get_patients_names"
-
-  # Get Therapist Count
-
-  get "/reports/therapist/count", to: "reports#get_therapist_count"
-
-  # Get Therapist Names
-
-  get "/reports/therapist/names", to: "reports#get_therapist_names"
 
   # Get Therapist Patients
 
@@ -132,8 +118,8 @@ Rails.application.routes.draw do
 
   get "/reports/patients/genderData", to: "reports#get_patient_gender_data"
 
-  resources :users, only: [:create, :show, :index, :update]
-  resources :patients, only: [:create, :show, :index, :update]
+  resources :users, only: [:create, :show, :index, :update, :destroy]
+  resources :patients, only: [:create, :show, :index, :update, :destroy]
   resources :moods
   resources :therapists
   resources :feedbacks

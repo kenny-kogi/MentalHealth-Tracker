@@ -89,18 +89,15 @@ Rails.application.routes.draw do
   get "/reports/models/names", to: "reports#get_model_names"
 
 
-
   # Get Therapist Patients
 
   get "/reports/therapist/patients", to: "reports#get_therapist_patient"
 
-  # Get Average Age Of Users
+  # Get Average Age Of Users and Patients
 
-  get "/reports/users/averageAge", to: "reports#get_average_age_users"
+  get "/reports/users_patients/averageAge", to: "reports#get_average_age_users_patients"
 
-  # Get Average Age of PAtients
-
-  get "/reports/patients/averageAge", to: "reports#get_average_age_patient"
+ 
 
   # Get User Location Data
 

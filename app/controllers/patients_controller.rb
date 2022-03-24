@@ -8,7 +8,7 @@ class PatientsController < ApplicationController
         else
             render json: {
                 status: 404,
-                errors: ['No user found']
+                errors: ['No Patient found']
             }
         end
     end
@@ -23,7 +23,7 @@ class PatientsController < ApplicationController
         else
             render json: {
                 status: 404,
-                errors: ['User not found']
+                errors: ['Patient not found']
             }
         end
     end

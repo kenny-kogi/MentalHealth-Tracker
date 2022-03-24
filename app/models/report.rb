@@ -39,14 +39,17 @@ class Report < ApplicationRecord
         therapist_patient
     end
 
-    def self.getAverageOfUsers
+    def self.getAverageOfUsersAndPatients
         users = User.average("age").round
-    end
-
-    def self.getAverageAgeOfPatients
         patients = Patient.average("age").round
+
+        return {
+            avgAgeUsers: users,
+            avgAgePatients: patients
+        }
     end
 
+    
     def self.getUsersLocationData
         users = User.all
         location_data = {}

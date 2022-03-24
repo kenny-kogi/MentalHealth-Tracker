@@ -48,13 +48,13 @@ class ReportsController < ApplicationController
         end
     end
 
-    def get_average_age_users
-        @data = Report::getAverageOfUsers
+    def get_average_age_users_patients
+        @data = Report::getAverageOfUsersAndPatients
 
         if @data
             render json: {
                 status: 200,
-                averageAgeUsers: @data
+                averageAges: @data
             }
         else
             render json: {
@@ -64,21 +64,6 @@ class ReportsController < ApplicationController
         end
     end
 
-    def get_average_age_patient
-        @data = Report::getAverageAgeOfPatients
-
-        if @data
-            render json: {
-                status: 200,
-                averageAgePatients: @data
-            }
-        else
-            render json: {
-                status: 500,
-                errors: @data.errors.full_messages
-            }
-        end
-    end
 
     def get_user_location_data
         @data = Report::getUsersLocationData

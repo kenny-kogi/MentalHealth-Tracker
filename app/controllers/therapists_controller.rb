@@ -63,9 +63,9 @@ class TherapistsController < ApplicationController
     end
 
     def destroy
-        @therapist = Therapist.find(params[:id])
+        @therapist = Therapist::destroy_therapist(params[:id])
 
-        if @therapist.destroy
+        if @therapist
             render json: {
                 status: :deleted
             }

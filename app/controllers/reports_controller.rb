@@ -128,4 +128,20 @@ class ReportsController < ApplicationController
             }
         end
     end
+
+    def get_mental_facility_details
+        @data = Report::getMentalHealthFacilityData
+
+        if @data
+            render json: {
+                status: 200,
+                mentalFacilityData: @data
+            }
+        else
+            render json: {
+                status: 500,
+                errors: @data.errors.full_messages
+            }
+        end
+    end
 end

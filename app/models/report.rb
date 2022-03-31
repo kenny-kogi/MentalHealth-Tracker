@@ -108,4 +108,23 @@ class Report < ApplicationRecord
 
         gender_data
     end
+
+    def self.get_all_moods
+        moods = Mood.all.count
+    end
+
+    def self.getMentalHealthFacilityData
+        patients = Patient.all
+        mental_facility_data = {}
+
+         patients.map{|data|
+            if mental_facility_data.key?(data.mental_health_facility)
+                mental_facility_data[data.mental_health_facility] += 1
+            else
+                mental_facility_data[data.mental_health_facility] = 1
+            end
+        }
+
+        mental_facility_data
+    end
 end

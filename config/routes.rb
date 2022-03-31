@@ -115,6 +115,11 @@ Rails.application.routes.draw do
 
   get "/reports/patients/genderData", to: "reports#get_patient_gender_data"
 
+  # Get Mental Facility Data
+
+  get "/reports/mental_facility_data", to: "reports#get_mental_facility_details"
+                                                                                           
+
   resources :users, only: [:create, :show, :index, :update, :destroy]
   resources :patients, only: [:create, :show, :index, :update, :destroy]
   resources :moods

@@ -10,7 +10,7 @@ class Feedback < ApplicationRecord
     end
 
     def self.get_therapist_feedback(id)
-        feedback = Feedback.where(patient_id: id)    
+        feedback = Feedback.where(patient_id: id).order("created_at DESC")    
     end
 
     # def self.patient

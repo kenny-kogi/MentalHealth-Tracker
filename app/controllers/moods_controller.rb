@@ -15,7 +15,7 @@ class MoodsController < ApplicationController
     end
 
     def show_mood_user
-        @moods = Mood.where(user_id: params[:id])
+        @moods = Mood.where(user_id: params[:id]).order("created_at DESC")    
         if @moods
         render json: {
             moods: @moods
@@ -29,7 +29,7 @@ class MoodsController < ApplicationController
     end
 
    def show_mood_patient
-        @moods = Mood.where(patient_id: params[:id])
+        @moods = Mood.where(patient_id: params[:id]).order("created_at DESC")    
         if @moods
         render json: {
             moods: @moods

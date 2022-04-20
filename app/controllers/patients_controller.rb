@@ -17,9 +17,7 @@ class PatientsController < ApplicationController
         @patient = Patient.find(params[:id])
 
         if @patient 
-            render json: {
-                patient: @patient
-            }
+            render json: @patient  
         else
             render json: {
                 status: 404,

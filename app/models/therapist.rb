@@ -3,6 +3,7 @@ class Therapist < ApplicationRecord
     has_many :patients
     has_many :feedbacks, dependent: :destroy
 
+    validates :password, length: { minimum: 6 }
     validates :username, presence: true 
     validates :username, uniqueness: true
     validates :username, length: { minimum: 4 }

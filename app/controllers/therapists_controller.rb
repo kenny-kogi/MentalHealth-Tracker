@@ -93,7 +93,7 @@ class TherapistsController < ApplicationController
     end
 
     def remove_patient_from_therapist
-        @data = Therapist.remove_patient_from_therapist(params[:therapist_id], params[:patient_id])
+        @data = Therapist::remove_patient_from_therapist(params[:therapist_id], params[:patient_id])
         if @data
             render json: {
                 status: 200,

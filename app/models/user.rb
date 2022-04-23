@@ -1,8 +1,9 @@
 class User < ApplicationRecord
     has_secure_password
     has_many :moods, dependent: :destroy
-    has_one_attached :image
+ 
 
+    validates :password, length: { minimum: 6 }
     validates :username, presence: true 
     validates :username, uniqueness: true
     validates :username, length: { minimum: 4 }

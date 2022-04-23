@@ -5,6 +5,7 @@ class Patient < ApplicationRecord
     has_many :medications, dependent: :destroy
     has_many :feedbacks, dependent: :destroy
 
+    validates :password, length: { minimum: 6 }
     validates :username, presence: true 
     validates :username, uniqueness: true
     validates :username, length: { minimum: 4 }
@@ -150,6 +151,5 @@ class Patient < ApplicationRecord
             elevatedAvg: elevatedAverage
         }
     end
-
 
 end

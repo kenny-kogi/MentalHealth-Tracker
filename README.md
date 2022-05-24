@@ -56,6 +56,4 @@ Open localhoost:3001 to test the available endpoints
 
 You can find all the detailed API Endpoints here https://documenter.getpostman.com/view/14668111/UyxqDjCL
 
-# Contributing
-
-:wave:
+# :wrestling:Contributing

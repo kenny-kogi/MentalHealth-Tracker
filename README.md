@@ -1,9 +1,14 @@
 <p align="center">
 <img src="./app/assets/images/logo.png" width="200" height="100"/>
 </p>
-<p align="center" style="font-size:40px;font-weight:bold;"> 
-Moody Tracker Backend
-</p>
+
+# Table of contents
+* [Project Description](#project-description)
+* [Technologies](#technologies)
+* [Prerequisites](#prerequisites)
+* [Setup](#how-to-install-and-run-the-project)
+* [API Endpoints](#api-endpoints)
+* [Contributing](#contributing)
 
 # Project Description
 
@@ -47,7 +52,7 @@ bundle install
 Usage
 
 ```
-run rails s
+rails s
 ```
 
 Open localhoost:3001 to test the available endpoints
@@ -56,10 +61,9 @@ Open localhoost:3001 to test the available endpoints
 
 You can find all the detailed API Endpoints here https://documenter.getpostman.com/view/14668111/UyxqDjCL
 
-# :wrestling:Contributing
+# Contributing
 
 I am more than happy to collaborate with the dev community on this project. Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-# :vertical_traffic_light: Project Status
 
-🔴 Slowed down
+
